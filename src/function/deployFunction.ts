@@ -29,7 +29,14 @@ export async function deploy(functionTreeItem: FunctionTreeItem): Promise<void> 
 
     channel.appendLine('Deploying function...');
 
-    await functionTreeItem.dashboard.createFunction(functionTreeItem.projectName, configFile);
+    try {
+        await functionTreeItem.dashboard.createFunction(functionTreeItem.projectName, configFile);
+    } catch (ex) {
+        vscode.window.showErrorMessage(`Error deploying the function`);
+        channel.appendLine(`Error deploying the function: ${ex}`);
+        return;
+    }
+
     vscode.window.showInformationMessage('Function deployed successfully');
     channel.appendLine('Function deployed successfully');
 }

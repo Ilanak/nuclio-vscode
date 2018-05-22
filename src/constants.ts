@@ -24,7 +24,7 @@ func Handler(context *nuclio.Context, event nuclio.Event) (interface{}, error) {
     return nil, nil
 }`;
 
-export const pythonHandlerCode: string = `def handler(context, event):
+export const pythonHandlerCode: string = `def Handler(context, event):
     pass`;
 
 export const nodejsHandlerCode: string = `exports.handler = function (context, event) {

@@ -64,6 +64,7 @@ suite('Create function tests', function (): void {
 
         // Cleanup
         await dashboard.deleteFunction({ name: functionName, namespace: namespace, projectName: localProject.name });
+        await dashboard.deleteProject({ namespace: namespace, name: localProject.name });
         showInputBox.restore();
         showOpenDialog.restore();
         showQuickPick.restore();
